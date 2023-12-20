@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from tjweb.models import *
-from tjweb.utils.pv import total_views_add, get_user_ip
+from tjweb.utils.pv import total_views_add
 
 
 # Create your views here.

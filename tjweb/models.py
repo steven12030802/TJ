@@ -17,7 +17,13 @@ class Type(models.Model):
 
 class Article(models.Model):
     title = models.CharField(verbose_name="文章标题", max_length=256)
-    belong = models.ForeignKey(to=Type, verbose_name="所属类型", on_delete=models.CASCADE)
+    belong_choices = (
+        (1, "通知公告"),
+        (2, "工作动态"),
+        (3, "部门动态"),
+        (4, "专题活动"),
+    )
+    belong = models.SmallIntegerField(verbose_name="所属类型", choices=belong_choices)
     content = models.FileField(verbose_name="正文文件", upload_to='data')
     create_date = models.DateTimeField(verbose_name="创建日期", auto_now_add=True)
     create_user = models.ForeignKey(to=User, verbose_name="创建人", on_delete=models.CASCADE)
@@ -58,6 +64,19 @@ class AnnounceImg(models.Model):
         verbose_name_plural = "宣传图管理"
 
 
+class Link(models.Model):
+    logo = models.ImageField(verbose_name="友链Logo", upload_to="link_logo")
+    title = models.CharField(verbose_name="显示内容", max_length=128)
+    url = models.URLField(verbose_name="跳转地址", max_length=256, blank=True)
+
+    def __str__(self):
+        return str(self.title)
+
+    class Meta:
+        verbose_name = "友链管理"
+        verbose_name_plural = "友链管理"
+
+
 class WebsiteViews(models.Model):
     """
     网站访问量统计表：字段ID、总访问量
@@ -87,4 +106,3 @@ class ViewIp(models.Model):
     class Meta:
         verbose_name = "访客统计"
         verbose_name_plural = "访客统计"
-
