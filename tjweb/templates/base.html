@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>甘肃人民检察院兰铁分院</title>
+    <link rel="shortcut icon" href="{% static 'base/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'lib/layui/css/layui.css' %}">
+    <script src="{% static 'lib/layui/layui.js' %}"></script>
+    <style>
+    /* 页面整体布局 */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 设置内容区域自动填充剩余高度 */
+    #content {
+        flex-grow: 1;
+        padding-bottom: 70px;
+    }
+
+    /* 页脚样式 */
+    #footer {
+        background-color: #f2f2f2;
+        padding: 80px;
+    }
+
+    #hd {
+        position: relative;
+        background-image: url("{% static 'base/bg-head.png' %}");
+        height: 400px;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ltlogo {
+        position: absolute;
+        top: 50%; /* 将图像元素垂直居中 */
+        left: 50%; /* 将图像元素水平居中 */
+        transform: translate(-50%, -50%);
+    }
+    #ss{
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        display: flex;
+    }
+
+    .layui-nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        background-image: url("{% static 'base/bg-footer.png' %}");
+    }
+
+    .layui-nav-item {
+        position: relative;
+        margin: 0 10px;
+        padding: 0 5px;
+    }
+
+    #dhl {
+        padding-bottom: 0;
+        opacity: 0.8;
+    }
+</style>
+</head>
+<body class="layui-bg-gray">
+
+    <div id="content">
+        <div id="hd">
+            <img id="ltlogo" src="{% static 'base/lantie_logo.png' %}" alt="">
+            <form action="/search" id="ss" class="layui-form" method="post">
+                {% csrf_token %}
+                <label>
+                    <input name="search_key" type="text" placeholder="请输入搜索内容" class="layui-input">
+                </label>
+                <button type="submit" class="layui-btn">搜索</button>
+            </form>
+            <ul class="layui-nav" id="dhl">
+                <li class="layui-nav-item">
+                    <a href="/">首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:">通知公告</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="">工作动态</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:">部门动态</a>
+    {#                <dl class="layui-nav-child">#}
+    {#                    <dd><a href="">菜单1</a></dd>#}
+    {#                    <dd><a href="">菜单2</a></dd>#}
+    {#                    <dd><a href="">菜单3</a></dd>#}
+    {#                </dl>#}
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:">专题活动</a>
+                </li>
+    {#            <li class="layui-nav-item"><a href="">演示</a></li>#}
+            </ul>
+        </div>
+
+        {% block body %}
+
+        {% endblock %}
+    </div>
+
+    <div id="footer" class="layui-text-center">
+        <p>今日PV访问量：{{ pv }}</p>
+    </div>
+
+</body>
+</html>

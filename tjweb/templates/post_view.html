@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="layui-container" style="padding-top: 50px">
+        <h1>{{ req.title }}</h1>
+        <h2>{{ req.belong }}--{{ req.create_date }}</h2>
+
+    </div>
+    <div class="layui-container">
+        <embed src="/static/data/{{ req.content }}" type="application/pdf" width="100%" height="800px" />
+    </div>
+{% endblock %}
