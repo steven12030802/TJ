@@ -2,13 +2,14 @@
 {% load static %}
 {% block body %}
     <div class="layui-container">
-        <div class="layui-row layui-col-space15" style="padding-top: 70px">
+        <div class="layui-row layui-col-space15" style="padding-top: 50px">
             <div class="layui-col-md6">
                 <div class="layui-carousel" id="ID-carousel-demo-image">
                     <div carousel-item>
                         {% for foo in req %}
                             <a href="">
-                                <img src="upload/{{ foo.img }}" alt="" style="width: 100%;height: 100%">
+                                <img src="upload/{{ foo.img }}" onclick="openPopup('/static/data/{{ foo.aid.content }}')"
+                                     style="width: 100%;height: 100%" alt="">
                                 <div class="text-overlay">{{ foo.name }}</div>
                             </a>
                         {% endfor %}
@@ -26,7 +27,7 @@
                         <ul>
                             {% for obj in gg|slice:":6" %}
                                 <li style="text-decoration: none;" class="mdui-list-item mdui-ripple"><a
-                                        href="post/{{ obj.id }}">{{ obj.title }}——————{{ obj.create_date|date }}</a>
+                                        href="post/{{ obj.id }}"><span>{{ obj.title }}</span> <span style="padding-right: 0">{{ obj.create_date|date }}</span> </a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -37,14 +38,15 @@
 
 
         {#宣传图#}
-        <div class="layui-container" style="padding-top: 70px">
+        <div class="layui-container" style="padding-top: 50px">
             {% for foo in xct %}
-                <a href=""><img src="/static/data/{{ foo.img }}" alt="" style="height: 260px; width: 100%"></a>
+                <img src="/static/data/{{ foo.img }}" alt=""
+                     style="width: 100%" onclick="openPopup('/static/data/{{ foo.aid.content }}')">
             {% endfor %}
         </div>
 
         {#工作动态、内设部门#}
-        <div class="layui-container" style="padding-top: 70px">
+        <div class="layui-container" style="padding-top: 50px">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md7">
                     <div class="layui-card">
@@ -67,20 +69,21 @@
             </div>
         </div>
 
+        <hr  style="padding-top: 25px">
 
         {#跳转链接#}
-        <div class="layui-container" style="padding-top: 70px">
+        <div class="layui-container" style="padding-top: 25px">
             <div class="layui-card">
                 <div class="layui-card-header">友链专区</div>
                 <div class="layui-card-body">
-                    结合 layui 的栅格系统<br>
-                    轻松实现响应式布局
+
                 </div>
             </div>
         </div>
 
+        <hr style="padding-top: 25px">
 
-        <div class="layui-container" style="padding-top: 70px">
+        <div class="layui-container" style="padding-top: 25px">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md7">
                     <div class="layui-card">
@@ -120,5 +123,9 @@
                 anim: 'fade',
             });
         });
+
+        function openPopup(url) {
+            window.open(url, '_blank');
+        }
     </script>
 {% endblock %}

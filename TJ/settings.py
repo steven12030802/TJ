@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-%xn43zk=aaapsrb(#23ob(!u-za@jf72)pof^jxi8$nzy=1i5v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -130,4 +130,31 @@ SIMPLEUI_HOME_QUICK = True
 SIMPLEUI_HOME_ACTION = True
 # 去掉默认Logo或换成自己Logo链接
 SIMPLEUI_LOGO = '/static/base/logo.png'
-
+# SIMPLEUI_MENU_OPEN_ALL = True
+# SIMPLEUI_CONFIG = {
+#     'MENU_OPEN_ALL': True,
+# }
+# SIMPLEUI_CONFIG = {
+#     'MENU': [
+#         {
+#             'name': '首页',
+#             'icon': 'fa fa-home',
+#             'url': '/admin/'
+#         },
+#         {
+#             'name': '文章管理',
+#             'icon': 'fa fa-newspaper-o',
+#             'models': [
+#                 {
+#                     'name': '发布文章',
+#                     'url': '/admin/posts/'
+#                 },
+#                 {
+#                     'name': '草稿箱',
+#                     'url': '/admin/drafts/'
+#                 },
+#             ]
+#         },
+#         # 其他菜单项...
+#     ]
+# }

@@ -25,4 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('post/<int:nid>', views.post_view),
+    path('announce/', views.announce_view),
+    path('work/', views.work_view),
+    path('dept/', views.department_view),
+    path('project/', views.project_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

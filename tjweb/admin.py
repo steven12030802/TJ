@@ -14,17 +14,32 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'belong')
 
 
-class TypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+# class TypeAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'name')
 
 
 class AnnounceImgAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'img', 'aid')
 
 
-admin.site.register(Type, TypeAdmin)
+# admin.site.register(Type, TypeAdmin)
+@admin.register(RotationImg)
+class RotationImgAdmin(admin.ModelAdmin):
+    list_display = ('name', 'img', 'aid')
+
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(AnnounceImg, AnnounceImgAdmin)
+
+
+@admin.register(Jump)
+class JumpAdmin(admin.ModelAdmin):
+    list_display = ('logo', 'title', 'url')
+
+
+@admin.register(Link)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('logo', 'title', 'url')
 
 
 @admin.register(WebsiteViews)
@@ -35,8 +50,3 @@ class ViewIpAdmin(admin.ModelAdmin):
 @admin.register(ViewIp)
 class ViewIpAdmin(admin.ModelAdmin):
     list_display = ('nid', 'user_ip', 'create_time')
-
-
-@admin.register(RotationImg)
-class RotationImgAdmin(admin.ModelAdmin):
-    list_display = ('name', 'img', 'aid')
