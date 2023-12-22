@@ -27,7 +27,7 @@
                         <ul>
                             {% for obj in gg|slice:":6" %}
                                 <li style="text-decoration: none;" class="mdui-list-item mdui-ripple"><a
-                                        href="post/{{ obj.id }}"><span>{{ obj.title }}</span> <span style="padding-right: 0">{{ obj.create_date|date }}</span> </a>
+                                        href="/static/data/{{ obj.content }}" target="_blank"><span>{{ obj.title }}</span> <span style="padding-right: 0">{{ obj.create_date|date }}</span> </a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -40,8 +40,8 @@
         {#宣传图#}
         <div class="layui-container" style="padding-top: 50px">
             {% for foo in xct %}
-                <img src="/static/data/{{ foo.img }}" alt=""
-                     style="width: 100%" onclick="openPopup('/static/data/{{ foo.aid.content }}')">
+                <p><img src="/static/data/{{ foo.img }}" alt=""
+                     style="width: 100%" onclick="openPopup('/static/data/{{ foo.aid.content }}')"></p>
             {% endfor %}
         </div>
 
@@ -74,9 +74,11 @@
         {#跳转链接#}
         <div class="layui-container" style="padding-top: 25px">
             <div class="layui-card">
-                <div class="layui-card-header">友链专区</div>
+                <div class="layui-card-header">跳转地址</div>
                 <div class="layui-card-body">
-
+                    {% for foo in jump %}
+                    	<span style="padding-left: 70px; font-size: xx-small"><a target="_blank" href="{{ foo.url }}"><img height="20px" src="/static/data/{{ foo.logo }}" alt="">{{ foo.title }}</a></span>
+                    {% endfor %}
                 </div>
             </div>
         </div>

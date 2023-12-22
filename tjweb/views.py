@@ -10,7 +10,8 @@ def index(request):
     pv = total_views_add()
     req = RotationImg.objects.all()
     xct = AnnounceImg.objects.all()
-    return render(request, 'index.html', {'gg': gg, 'pv': pv, 'req': req, 'xct': xct})
+    jump = Jump.objects.all()
+    return render(request, 'index.html', {'gg': gg, 'pv': pv, 'req': req, 'xct': xct, 'jump': jump})
 
 
 def post_view(request, nid):
