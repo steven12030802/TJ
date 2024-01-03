@@ -31,7 +31,7 @@
 
         #hd {
             position: relative;
-            background-image: url("{% static 'base/bg-head.png' %}");
+            background-image: url("{% static 'base/bg-head1.jpg' %}");
             height: 400px;
             background-size: cover;
             display: flex;
@@ -41,8 +41,9 @@
 
         #ltlogo {
             position: absolute;
-            top: 50%; /* 将图像元素垂直居中 */
-            left: 50%; /* 将图像元素水平居中 */
+            top: 43%; /* 将图像元素垂直居中 */
+            left: 30%; /* 将图像元素水平居中 */
+            height: 80px;
             transform: translate(-50%, -50%);
         }
 
@@ -71,15 +72,16 @@
 
         #dhl {
             padding-bottom: 0;
-            opacity: 0.8;
+            opacity: 0.6;
+            font-style: inherit;
         }
     </style>
 </head>
-<body class="layui-bg-gray">
+<body class="layui-bg-gray" style="">
 
 <div id="content">
     <div id="hd">
-        <img id="ltlogo" src="{% static 'base/lantie_logo.png' %}" alt="">
+        <img class="" id="ltlogo" src="{% static 'base/test.png' %}" alt="">
         <form action="/search" id="ss" class="layui-form" method="post">
             {% csrf_token %}
             <label>
@@ -99,6 +101,9 @@
             </li>
             <li class="layui-nav-item">
                 <a href="/dept/">部门动态</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/check/">检查业务</a>
             </li>
             <li class="layui-nav-item">
                 <a href="/project/">专题活动</a>

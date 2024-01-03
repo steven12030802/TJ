@@ -34,12 +34,12 @@ admin.site.register(AnnounceImg, AnnounceImgAdmin)
 
 @admin.register(Jump)
 class JumpAdmin(admin.ModelAdmin):
-    list_display = ('logo', 'title', 'url')
+    list_display = ('id', 'logo', 'title', 'url')
 
 
 @admin.register(Link)
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('logo', 'title', 'url')
+    list_display = ('id', 'logo', 'title', 'url')
 
 
 @admin.register(WebsiteViews)

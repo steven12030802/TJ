@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="layui-container" style="padding-top: 70px">
+        <div>
+            <blockquote class="layui-elem-quote">
+                <h2>检查业务</h2>
+            </blockquote>
+            <br>
+            <p><i class="layui-icon layui-icon-location"></i>当前位置：<a href="/">首页</a>&nbsp;/&nbsp;<a
+                    href="/check">检查业务</a></p>
+            <hr>
+            <br>
+            <table class="layui-table" lay-skin="line">
+                <colgroup>
+                    <col width="350">
+                    <col width="350">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>编辑人</th>
+                    <th>创建日期</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for foo in req %}
+                    <tr onclick="openPopup('/static/data/{{ foo.content }}')">
+                        <td>{{ foo.title }}</td>
+                        <td>{{ foo.create_user }}</td>
+                        <td>{{ foo.create_date }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function redirect(url) {
+            window.location.href = url;
+        }
+
+        function openPopup(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+{% endblock %}

@@ -6,12 +6,20 @@ from tjweb.utils.pv import total_views_add
 
 # Create your views here.
 def index(request):
+    # 公告
     gg = Article.objects.filter(belong=1)
+    # 浏览量
     pv = total_views_add()
+    # 轮播图
     req = RotationImg.objects.all()
+    # 宣传图
     xct = AnnounceImg.objects.all()
+    # 友链
     jump = Jump.objects.all()
-    return render(request, 'index.html', {'gg': gg, 'pv': pv, 'req': req, 'xct': xct, 'jump': jump})
+    # 工作动态
+    work_list = Article.objects.filter(belong=2)
+    return render(request, 'index.html',
+                  {'gg': gg, 'pv': pv, 'req': req, 'xct': xct, 'jump': jump, 'work_list': work_list})
 
 
 def post_view(request, nid):
@@ -32,6 +40,11 @@ def work_view(request):
 def department_view(request):
     req = Article.objects.filter(belong=3)
     return render(request, 'department_view.html', {'req': req})
+
+
+def check_view(request):
+    req = Article.objects.filter(belong=4)
+    return render(request, 'check_view.html', {'req': req})
 
 
 def project_view(request):

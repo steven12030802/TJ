@@ -2,7 +2,7 @@
 {% load static %}
 {% block body %}
     <div class="layui-container">
-        <div class="layui-row layui-col-space15" style="padding-top: 50px">
+        <div class="layui-row layui-col-space1" style="padding-top: 50px">
             <div class="layui-col-md6">
                 <div class="layui-carousel" id="ID-carousel-demo-image">
                     <div carousel-item>
@@ -21,13 +21,13 @@
 
                 <div class="layui-card">
                     <div class="layui-card-header">
-                        <span class="">最新通知</span>
+                        <i class="layui-icon layui-icon-notice">最新通知</i>
                     </div>
                     <div class="layui-card-body">
                         <ul>
                             {% for obj in gg|slice:":6" %}
                                 <li style="text-decoration: none;" class="mdui-list-item mdui-ripple"><a
-                                        href="/static/data/{{ obj.content }}" target="_blank"><span>{{ obj.title }}</span> <span style="padding-right: 0">{{ obj.create_date|date }}</span> </a>
+                                        href="/post/{{ obj.id }}" target="_blank"><span>{{ obj.title }}</span>&nbsp; <span>{{ obj.create_date|date }}</span> </a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -50,16 +50,22 @@
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md7">
                     <div class="layui-card">
-                        <div class="layui-card-header">工作动态</div>
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-note">工作动态</i></div>
                         <div class="layui-card-body">
-                            卡片式面板面板通常用于非白色背景色的主体内<br>
-                            从而映衬出边框投影
+                        <ul>
+                            {% for obj in work_list|slice:":6" %}
+                                <li style="text-decoration: none;" class="mdui-list-item mdui-ripple"><a
+                                        href="/static/data/{{ obj.content }}" target="_blank"><span>{{ obj.title }}</span> &nbsp;<span style="padding-right: 0">{{ obj.create_date|date }}</span> </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="layui-col-md5">
                     <div class="layui-card">
-                        <div class="layui-card-header">内设部门</div>
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-user">内设部门</i></div>
                         <div class="layui-card-body">
                             结合 layui 的栅格系统<br>
                             轻松实现响应式布局
@@ -74,10 +80,10 @@
         {#跳转链接#}
         <div class="layui-container" style="padding-top: 25px">
             <div class="layui-card">
-                <div class="layui-card-header">跳转地址</div>
-                <div class="layui-card-body">
+                <div class="layui-card-header"><i class="layui-icon layui-icon-website">跳转地址</i></div>
+                <div class="layui-card-body layui-row">
                     {% for foo in jump %}
-                    	<span style="padding-left: 70px; font-size: xx-small"><a target="_blank" href="{{ foo.url }}"><img height="20px" src="/static/data/{{ foo.logo }}" alt="">{{ foo.title }}</a></span>
+                    	<div class="layui-col-md2"><a target="_blank" href="{{ foo.url }}"><img height="15.32px" src="/static/data/{{ foo.logo }}" alt="">{{ foo.title }}</a></div>
                     {% endfor %}
                 </div>
             </div>
@@ -89,7 +95,7 @@
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md7">
                     <div class="layui-card">
-                        <div class="layui-card-header">检查业务</div>
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-tabs">检查业务</i></div>
                         <div class="layui-card-body">
                             卡片式面板面板通常用于非白色背景色的主体内<br>
                             从而映衬出边框投影
@@ -98,7 +104,7 @@
                 </div>
                 <div class="layui-col-md5">
                     <div class="layui-card">
-                        <div class="layui-card-header">专题活动</div>
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-theme">专题活动</i></div>
                         <div class="layui-card-body">
                             结合 layui 的栅格系统<br>
                             轻松实现响应式布局

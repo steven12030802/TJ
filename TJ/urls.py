@@ -28,5 +28,6 @@ urlpatterns = [
     path('announce/', views.announce_view),
     path('work/', views.work_view),
     path('dept/', views.department_view),
+    path('check/', views.check_view),
     path('project/', views.project_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

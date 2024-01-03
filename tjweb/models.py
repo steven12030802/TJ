@@ -120,3 +120,7 @@ class ViewIp(models.Model):
     class Meta:
         verbose_name = "访客统计"
         verbose_name_plural = "访客统计"
+
+
+
+
